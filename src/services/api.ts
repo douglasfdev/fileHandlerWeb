@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
 
 const api: AxiosInstance = axios.create({
-  baseURL: "http://localhost:5022/v1/api/",
+  baseURL: process.env.VUE_APP_BASE_URL,
 });
 
 export default api;

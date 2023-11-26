@@ -37,10 +37,20 @@
           <span v-else>
             Adicione seu arquivo…
           </span>
+
           <button class="button is-primary is-light mt-6" @click="saveCsv() ">Upload</button>
         </span>
+
       </label>
     </div>
+
+    <span v-if="!!uploadedFile" class="mt-6 pt-6">
+      <span class="has-background-success-light">Nome do arquivo no banco de dados:</span> <span class="has-text-info-dark"> {{ fileName }} </span>
+    </span>
+    <span v-else class="mt-6 pt-6">
+      <span class="has-background-primary-light">Aguarde...</span>
+    </span>
+
   </div>
 </template>
 
@@ -49,8 +59,10 @@ import { ref } from 'vue'
 import api from '@/services/api';
 
 const file = ref<File | null>();
+const fileName = ref<string>();
 const form = ref<HTMLFormElement>();
 const selectedFileName = ref<string | undefined>();
+const uploadedFile = ref<boolean>(false);
 
 const onFileChanged = ($event: Event) => {
   const target = $event.target as HTMLInputElement;
@@ -62,7 +74,7 @@ const onFileChanged = ($event: Event) => {
   if (type != 'text/csv') return alert("Arquivo invalido, precisa ser .csv!");
 
   file.value = target.files?.item(0);
-   selectedFileName.value = file.value?.name;
+  selectedFileName.value = file.value?.name;
 }
 
 const saveCsv = async () => {
@@ -74,14 +86,16 @@ const saveCsv = async () => {
   formData.append('csvFile', csvFile);
 
   try {
-    const req = await api.post('uploadFile/', formData, {
+    const req = await api.post(process.env.VUE_APP_POST_FILE, formData, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
     });
 
     const res = req.data;
-    console.log(res);
+
+    fileName.value = res.file;
+    uploadedFile.value = true;
   } catch (e: any | unknown) {
     alert(e.message);
     form.value?.reset();
