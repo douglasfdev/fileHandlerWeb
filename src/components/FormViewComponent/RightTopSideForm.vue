@@ -25,7 +25,7 @@
           placeholder="Adicione um arquivo CSV"
           ref="fileInput"
           accept=".csv"
-          @change="onFileChanged($event)"
+          @change="onFileChanged"
         />
         <span class="file-cta">
           <span class="file-icon">
@@ -38,7 +38,7 @@
             Adicione seu arquivo…
           </span>
 
-          <button class="button is-primary is-light mt-6" @click="saveCsv() ">Upload</button>
+          <button class="button is-primary is-light mt-6" @click="saveCsv">Upload</button>
         </span>
 
       </label>
@@ -103,5 +103,3 @@ const saveCsv = async () => {
   }
 }
 </script>
-
-<style></style>

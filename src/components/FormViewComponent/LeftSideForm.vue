@@ -6,30 +6,24 @@
   </header>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
-
-  export default defineComponent({
-    name: 'LeftSideApp',
-  })
+<script lang="ts" setup>
 </script>
 
 <style scoped>
   header {
     background: #0d3b66;
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
 
   img {
-    max-width: 25%;
-    max-height: 25%;
+    max-width: 50%;
+    max-height: 50%;
   }
 
   @media only screen and(max-width: 768px) {
       header{
-      padding: 2.rem;
-      height: 50vh;
+      width: 25vh;
     }
 
     img {
