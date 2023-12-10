@@ -82,7 +82,7 @@ const updateListFiles = async ($event: MouseEvent) => {
   isListed.value = true
 }
 
-onMounted(() => showFiles())
+onMounted(() => showFiles());
 </script>
 
 <style scoped>

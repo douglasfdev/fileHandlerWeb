@@ -21,14 +21,14 @@
     max-height: 50%;
   }
 
-  @media only screen and(max-width: 768px) {
+  @media only screen and (max-width: 768px) {
       header{
-      width: 25vh;
+      width: 100%;
     }
 
     img {
-      max-width: 10%;
-      max-height: 10%;
+      max-width: 25%;
+      max-height: 25%;
     }
   }
 

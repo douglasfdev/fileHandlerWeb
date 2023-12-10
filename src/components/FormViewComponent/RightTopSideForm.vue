@@ -3,11 +3,9 @@
     <div class="columns">
 
       <div class="column">
-
         <section>
           <h1> Adicione seu arquivo CSV que contenha dados de uma pessoa. </h1>
         </section>
-
       </div>
 
     </div>
